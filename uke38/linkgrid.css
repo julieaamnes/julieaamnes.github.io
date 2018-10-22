@@ -1,0 +1,15 @@
+  main>p{
+    background-color: lightgreen;
+    text-align: center;
+    padding:40px
+  }
+  h1{
+    background-color: lightblue;
+    text-align: center;
+    padding:30px
+  }
+  main{display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-column-gap: 20px;
+      grid-row-gap: 5px;
+    }

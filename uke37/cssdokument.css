@@ -1,0 +1,15 @@
+body {
+  background-color: orange;
+  font-family: "century gothic", Arial, sans-serif;
+  font-size: 24px;
+  color : white;
+}
+li{
+  background-color: white;
+  padding: 5px;
+  margin: 5px;
+  width: 200px;
+  border-radius: 5px;
+  list-style-type: none;
+}
+h3{color: black; }

@@ -1,0 +1,38 @@
+h1{color: black; text-align: left;}
+h3{color: black;text-align: left;}
+
+header{
+  background-color: lightgray;
+}
+
+body {
+  background-color: lightgray;
+  font-family: "Century gothic", Arial, sans-serif;
+  font-size: 24px;
+}
+
+main>p{
+  text-align: left;
+  padding: 30px
+}
+h1{text-align: left;color: black}
+h1{
+  background-color: lightgray;
+  text-align: center;˘
+  width: 300px;
+  border: 5px solid black
+}
+a{
+  color: black;
+}
+
+footer{
+  background-color:gray;
+  text-align: center;
+  color: white;
+}
+ul{
+  list-style-type: none;
+  margin-right: auto;
+  margin-left: auto;
+}
