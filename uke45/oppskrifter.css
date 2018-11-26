@@ -1,0 +1,44 @@
+body{
+  font-family: Helvetica, sans-serif;
+  margin: auto;
+  background-color: lightgray;
+  margin-bottom: 100px;
+}
+header{
+  margin-left: auto;
+  border-bottom: 40px solid lightgray;
+  background-color: lightgray;
+}
+
+#navigasjonsbar ul a{
+  text-decoration: none;
+  padding: 25px;
+  background-color:black;
+  color: white;
+}
+nav{
+  margin: 0px;
+  padding: 10px;
+  background-color: black;
+}
+#navigasjonsbar ul{
+  margin-left: 29%;
+}
+
+.oppskrift{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 25px;
+}
+
+
+main{
+  margin-left: 180px;
+  margin-bottom: 50px;
+  margin-right: 200px;
+}
+footer{
+  margin-left: 90px;
+  border-top: 1px solid black;
+  margin-right: 60px;
+}
