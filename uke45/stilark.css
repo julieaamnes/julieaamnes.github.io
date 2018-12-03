@@ -43,3 +43,7 @@ footer{
   border-top: 1px solid black;
   margin-right: 60px;
 }
+a:visited{
+  text-decoration: none;
+  color: black;
+}

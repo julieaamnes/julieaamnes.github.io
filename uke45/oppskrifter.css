@@ -16,6 +16,7 @@ header{
   background-color:black;
   color: white;
 }
+
 nav{
   margin: 0px;
   padding: 10px;
@@ -31,7 +32,6 @@ nav{
   grid-row-gap: 25px;
 }
 
-
 main{
   margin-left: 180px;
   margin-bottom: 50px;
@@ -41,4 +41,8 @@ footer{
   margin-left: 90px;
   border-top: 1px solid black;
   margin-right: 60px;
+}
+a:visited{
+  text-decoration: none;
+  color: black;
 }
