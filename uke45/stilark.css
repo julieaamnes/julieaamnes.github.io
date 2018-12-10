@@ -47,3 +47,6 @@ a:visited{
   text-decoration: none;
   color: black;
 }
+a{
+  margin-bottom: 20px;
+}
