@@ -2,7 +2,7 @@ body{
   font-family: Helvetica, sans-serif;
   margin: auto;
   background-color: lightgray;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 header{
   margin-left: auto;
@@ -43,6 +43,11 @@ footer{
   border-top: 1px solid black;
   margin-right: 60px;
 }
+.info{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 a:visited{
   text-decoration: none;
   color: black;
