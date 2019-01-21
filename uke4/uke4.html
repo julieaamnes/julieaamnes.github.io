@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <p>hei</p>
+    <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDQPvjFuOXv8VfxEx91f-sdF-DDSBnxpg0",
+        authDomain: "it-test-654af.firebaseapp.com",
+        databaseURL: "https://it-test-654af.firebaseio.com",
+        projectId: "it-test-654af",
+        storageBucket: "",
+        messagingSenderId: "397872573887"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+    <script>
+      const db = firebase.database();
+      const kontaktliste = db.ref("kontaktliste")
+      kontaktliste.push(
+        {
+          "firstname": "Julie",
+          "lastname": "Aamnes",
+          "nærmeste familie": ["mamma", "pappa", "søster", "bror"],
+          "interesser": ["shoppe", "venner"],
+          "streetnr": "Syverstadkollen 28c",
+          "city": "Nesbru",
+          "fødselsdag": {
+            "dag": 8,
+            "måned": 11,
+            "år": 2001,
+          }
+        }
+
+      )
+      kontaktliste.push(
+        {
+          "firstname": "tobias",
+          "lastname": "gudbjerg",
+          "nærmeste familie": ["mor", "far", "søster", "bror"],
+          "interesser": ["spille", "venner"],
+          "streetnr": "hvem vet 11b",
+          "city": "Nesbru",
+          "fødselsdag": {
+            "dag": 12,
+            "måned": 12,
+            "år": 2001,
+          }
+        }
+
+      )
+    </script>
+
+  </body>
+</html>
