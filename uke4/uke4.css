@@ -1,0 +1,32 @@
+{
+  font-size: 100%;
+}
+body {
+    font-family: sans-serif;
+    background-color: grey;
+    margin: 100px;
+}
+#secKontakter {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    max-width: 700px;
+}
+#secKontakter div {
+    padding: 1rem;
+}
+#secKontakter div:nth-child(6n + 0),
+#secKontakter div:nth-child(6n - 1),
+#secKontakter div:nth-child(6n - 2)
+{
+    background-color: #eee;
+}
+
+
+function visKontakt(snap) {{
+    const telefon = snap.key;
+    const kontakt = snap.val();
+    secKontakter.innerHTML += `
+        <div>${kontakt.navn}</div>
+        <div>${telefon}</div>
+        <div>${kontakt.epost}</div>;
+}

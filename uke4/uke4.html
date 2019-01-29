@@ -3,9 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+  <link rel="stylesheet" href="uke4.css">
   </head>
   <body>
-    <p>hei</p>
+
+    <section>
+      <form id="skjema">
+          <input id="inpNavn" type="text" required placeholder="navn">
+          <input id="inpTelefon" type="text" required placeholder="telefon">
+          <input id="inpEpost" type="text" required placeholder="epost">
+          <button type="submit">Registrer kontakt</button>
+        </form>
+      </section>
+
+
     <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
     <script>
       // Initialize Firebase
@@ -21,41 +32,50 @@
     </script>
 
     <script>
+
+      const skjema = document.querySelector("#skjema");
+      const inpNavn = document.querySelector("#inpNavn");
+      const inpTelefon = document.querySelector("#inpTelefon");
+      const inpEpost = document.querySelector("#inpEpost");
+      const secKontakter = document.querySelector("#secKontakter");
+      // Firebase
       const db = firebase.database();
-      const kontaktliste = db.ref("kontaktliste")
-      kontaktliste.push(
-        {
-          "firstname": "Julie",
-          "lastname": "Aamnes",
-          "nærmeste familie": ["mamma", "pappa", "søster", "bror"],
-          "interesser": ["shoppe", "venner"],
-          "streetnr": "Syverstadkollen 28c",
-          "city": "Nesbru",
-          "fødselsdag": {
-            "dag": 8,
-            "måned": 11,
-            "år": 2001,
-          }
-        }
+      const kontakter = db.ref("kontakter");
+      // Registrere en ny kontakt
+      function registrerKontakt(evt) {
+          evt.preventDefault();
+          const key = inpTelefon.value;
+          const data = {
+              navn: inpNavn.value,
+              epost: inpEpost.value
+          };
+          const kontakt = kontakter.child(key);
+          kontakt.set(data);
 
-      )
-      kontaktliste.push(
-        {
-          "firstname": "tobias",
-          "lastname": "gudbjerg",
-          "nærmeste familie": ["mor", "far", "søster", "bror"],
-          "interesser": ["spille", "venner"],
-          "streetnr": "hvem vet 11b",
-          "city": "Nesbru",
-          "fødselsdag": {
-            "dag": 12,
-            "måned": 12,
-            "år": 2001,
-          }
-        }
+          // Nuller ut skjemaet
+          skjema.reset();
+      }
+      // Knytter funksjonen til hendelsen at skjemaet blir sendt inn
+      skjema.addEventListener("submit", registrerKontakt);
 
-      )
+
+    function visKontakt(snap) {
+        const telefon = snap.key; // Primær-nøkkelen
+        const kontakt = snap.val(); // Dataene til kontakten
+        secKontakter.innerHTML += `
+            <div>${kontakt.navn}</div>
+            <div>${telefon}</div>
+            <div>${kontakt.epost}</div>
+
+          `;
+      }
+      // Knytter funksjonen til hendelsen at skjemaet blir sendt inn
+      skjema.addEventListener("submit", registrerKontakt);
+      // Starter funksjonen når det blir lagt til en kontakt
+      kontakter.on("child_added", visKontakt);
     </script>
+
+
 
   </body>
 </html>
