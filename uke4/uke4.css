@@ -20,13 +20,3 @@ body {
 {
     background-color: #eee;
 }
-
-
-function visKontakt(snap) {{
-    const telefon = snap.key;
-    const kontakt = snap.val();
-    secKontakter.innerHTML += `
-        <div>${kontakt.navn}</div>
-        <div>${telefon}</div>
-        <div>${kontakt.epost}</div>;
-}
