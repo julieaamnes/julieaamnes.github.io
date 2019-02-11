@@ -34,7 +34,7 @@
         const country = db.ref("country"); // Referer til alt som ligger under sko i databasen
 
 
-        function visVare(snapshot){
+        function visLand(snapshot){
             //Javascript-funksjon som skriver varene ut på nettsiden i main-elementet
             let vare = snapshot.val();
             main.innerHTML +=`
@@ -45,7 +45,7 @@
             `
         }
 
-        country.on("child_added",visVare); // Spørring som lytter til nye oppføringer i databasen, hvis det skjer kjøres funksjonen visVare.
+        country.on("child_added",visLand); // Spørring som lytter til nye oppføringer i databasen, hvis det skjer kjøres funksjonen visVare.
                                     // Når nettsiden lastes inn går den gjennom hver oppføring i databasen og kjører funksjonen visVare
                                     // på hver oppføring.
 
@@ -53,7 +53,7 @@
         // Spørring som sorterer sko etter pris, laveste først
         Country
             .orderByChild("Europa")
-            .on("child_added",visVare);
+            .on("child_added",visLand);
 
 
     </script>
