@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>land</title>
+
+        <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyD8o4mbgLFQW2f9AKaBkUh_ZJ0pIkNnwNk",
+            authDomain: "land-5b278.firebaseapp.com",
+            databaseURL: "https://land-5b278.firebaseio.com",
+            projectId: "land-5b278",
+            storageBucket: "land-5b278.appspot.com",
+            messagingSenderId: "147074537763"
+          };
+          firebase.initializeApp(config);
+        </script>
+  </head>
+  <body>
+    <header>
+
+    </header>
+
+    <main>
+
+    </main>
+    <script>
+        const main = document.querySelector("main"); // Variabel som referer til mian-elementet
+
+        // Referanser til databasen
+        const db = firebase.database();
+        const country = db.ref("country"); // Referer til alt som ligger under sko i databasen
+
+
+        function visVare(snapshot){
+            //Javascript-funksjon som skriver varene ut på nettsiden i main-elementet
+            let vare = snapshot.val();
+            main.innerHTML +=`
+                <article class="vare">
+                    <h1>${country.continentName} - ${vare.countryName}</h1>
+                    <p>Befolkning: ${country.population}</p>
+                </article>
+            `
+        }
+
+        country.on("child_added",visVare); // Spørring som lytter til nye oppføringer i databasen, hvis det skjer kjøres funksjonen visVare.
+                                    // Når nettsiden lastes inn går den gjennom hver oppføring i databasen og kjører funksjonen visVare
+                                    // på hver oppføring.
+
+
+        // Spørring som sorterer sko etter pris, laveste først
+        Country
+            .orderByChild("Europa")
+            .on("child_added",visVare);
+
+
+    </script>
+
+  </body>
+</html>
