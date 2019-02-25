@@ -20,6 +20,17 @@
   </head>
   <body>
     <header>
+      <nav>
+          <button onclick="visLand()"><img src="visalleland.png"> </button>
+          <br>
+          <button onclick="visLandEurope()"> Europe </button>
+          <button onclick="visLandAfrica()"> Africa  </button>
+          <button onclick="visLandAsia()"> Asia </button>
+          <button onclick="visLandAntarctica()"> Antarctica </button>
+          <button onclick="visLandNorthAmerica()"> North Amerika </button>
+          <button onclick="visLandSouthAmerica()"> South America </button>
+          <button onclick="visLandOceania()"> Oceania </button>
+      </nav>
 
     </header>
 
@@ -34,26 +45,81 @@
         const country = db.ref("country"); // Referer til alt som ligger under sko i databasen
 
 
-        function visLand(snapshot){
+        function lagHTML(snapshot){
             //Javascript-funksjon som skriver varene ut på nettsiden i main-elementet
-            let vare = snapshot.val();
+            let country = snapshot.val();
             main.innerHTML +=`
                 <article class="vare">
-                    <h1>${country.continentName} - ${vare.countryName}</h1>
+                    <h1>${country.continentName} - ${country.countryName}</h1>
                     <p>Befolkning: ${country.population}</p>
+                    <p>Språk: ${country.languages}</p>
                 </article>
             `
         }
 
-        country.on("child_added",visLand); // Spørring som lytter til nye oppføringer i databasen, hvis det skjer kjøres funksjonen visVare.
-                                    // Når nettsiden lastes inn går den gjennom hver oppføring i databasen og kjører funksjonen visVare
-                                    // på hver oppføring.
+        country.on("child_added",lagHTML);
 
 
-        // Spørring som sorterer sko etter pris, laveste først
-        Country
-            .orderByChild("Europa")
-            .on("child_added",visLand);
+
+        function visLand(){
+              main.innerHTML = "";
+              country.on("child_added",lagHTML);
+        }
+
+        function visLandEurope(){
+              main.innerHTML = "";
+              country
+                  .orderByChild("continentName")
+                  .equalTo("Europe")
+                  .on("child_added",lagHTML);
+        }
+
+        function visLandAfrica(){
+          main.innerHTML = "";
+          country
+              .orderByChild("continentName")
+              .equalTo("Africa")
+              .on("child_added", lagHTML)
+        }
+        function visLandAsia(){
+              main.innerHTML = "";
+              country
+                  .orderByChild("continentName")
+                  .equalTo("Asia")
+                  .on("child_added",lagHTML);
+        }
+
+        function visLandAntarctica(){
+          main.innerHTML = "";
+          country
+              .orderByChild("continentName")
+              .equalTo("Antarctica")
+              .on("child_added", lagHTML)
+        }
+
+        function visLandNorthAmerica(){
+              main.innerHTML = "";
+              country
+                  .orderByChild("continentName")
+                  .equalTo("North America")
+                  .on("child_added",lagHTML);
+        }
+
+        function visLandSouthAmerica(){
+          main.innerHTML = "";
+          country
+              .orderByChild("continentName")
+              .equalTo("South America")
+              .on("child_added", lagHTML)
+        }
+
+        function visLandOceania(){
+          main.innerHTML = "";
+          country
+              .orderByChild("continentName")
+              .equalTo("Oceania")
+              .on("child_added", lagHTML)
+        }
 
 
     </script>
