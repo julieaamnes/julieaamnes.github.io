@@ -1,0 +1,137 @@
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>style.no</title>
+    <link rel="stylesheet" href="nettside.css">
+
+
+  </head>
+  <body>
+    <header>
+
+      <h1 button onclick="window.location.href = 'nettside.html';" id = "overskrift" > STYLE </button> </h1>
+
+      <br><br>
+
+      <nav id = "merkerButton">
+        <button type="button" name="button"> <a href="nettside.html"> TILBAKE </a> </button>
+      </nav>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+      <section class="headerimg">
+      </section>
+
+
+    <main>
+          <script>
+          function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+          }
+
+          window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+              var dropdowns = document.getElementsByClassName("dropdown-content");
+              var i;
+              for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                  openDropdown.classList.remove('show');
+                }
+              }
+            }
+          }
+          </script>
+
+      </header>
+
+
+
+      <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyDBSHhH_D9g1eE7behKi4Z-VXzTfsBfWfo",
+          authDomain: "prosjekt-dc0b0.firebaseapp.com",
+          databaseURL: "https://prosjekt-dc0b0.firebaseio.com",
+          projectId: "prosjekt-dc0b0",
+          storageBucket: "",
+          messagingSenderId: "774854593017"
+        };
+        firebase.initializeApp(config);
+      </script>
+      <script>
+          let database = firebase.database();
+          let bukser = database.ref("varer/bukser");
+          let kjoler = database.ref("varer/kjoler");
+          let jakker = database.ref("varer/jakker");
+          let sko = database.ref("varer/sko");
+          let topper = database.ref("varer/topper");
+          let tilbehør = database.ref("varer/tilbehør");
+          let merker = database.ref("varer/merker");
+
+          let main = document.querySelector("main");
+          let headerimg = document.querySelector(".headerimg")
+          function visVare(snapshot) {
+              let vare = snapshot.val();
+              main.innerHTML += `
+                  <article>
+                      <img class = "varer" src="bilder/${vare.bilde}">
+                      <h2>${vare.navn}</h2>
+                      <p>${vare.merke} ${vare.pris}</p>
+                  </article>
+          `;
+        }
+
+
+        function visAlleVarer() {
+          headerimg.innerHTML=`<img src="bilder/hovedside.jpg" alt="hovedside" id = "hovedside">`;
+          main.innerHTML = "";
+            bukser.orderByChild("navn").on("child_added", visVare);
+            kjoler.orderByChild("navn").on("child_added", visVare);
+            jakker.orderByChild("navn").on("child_added", visVare);
+            sko.orderByChild("navn").on("child_added", visVare);
+            tilbehør.orderByChild("navn").on("child_added", visVare);
+        }
+
+
+
+
+      </script>
+
+      <a href="https://www.na-kd.com/en"><img src="bilder/nakdlogo.jpg" alt="NAKD" class = "merkerBilder"></a>
+      <a href="https://shop.mango.com/no"><img src="bilder/mangologo.jpg" alt="MANGO" class = "merkerBilder"></a>
+      <a href="https://www.samsoe.com/en/home"><img src="bilder/samsøe&samsøelogo.jpg" alt="SAMSØE&SAMSØE" class = "merkerBilder"></a>
+      <a href="https://www.calvinklein.ie/"><img src="bilder/calvinkleinlogo.jpg" alt="CALVINKLEIN" class = "merkerBilder"></a>
+      <a href="https://www.levi.com/NO/en/"><img src="bilder/levislogo.jpg" alt="LEVIS" class = "merkerBilder"></a>
+
+
+
+
+
+    </main>
+    <footer>
+      <br>
+      <h4>STYLE</h4>
+      <br>
+      <h4>KONTAKT OSS</h4>
+      <br>
+      <p>  . </p>
+      <p> Her hos style.no finner du klær til enhver anledning. <br> <br>
+          Vi har kjente varemerker som NA-KD, Mango, Samsøe & Samsøe,
+          Levi´s og Calvin Klein. <br> <br> Der du finner et spredt utvalg av pris,
+          modeller og kolleksjoner.</p>
+      <br>
+      <ul>
+        <li> <strong> Email: </strong>  style@shop.com </li>
+        <li> <strong> Telefon: </strong>  987 65 432</li>
+        <li> <strong> Adresse: </strong>  Elias Smiths vei 15</li>
+      </ul>
+    </footer>
+
+  </body>
+</html>

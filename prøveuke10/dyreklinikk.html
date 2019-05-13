@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Dyreklinikken</title>
+    <link rel="stylesheet" href="dyreklinikk.css">
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDB7D0Zo0p_SBl6QNKAghcw7a_N799qxCI",
+        authDomain: "dyreklinikk-8a244.firebaseapp.com",
+        databaseURL: "https://dyreklinikk-8a244.firebaseio.com",
+        projectId: "dyreklinikk-8a244",
+        storageBucket: "",
+        messagingSenderId: "282290711822"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+
+  </head>
+  <body>
+    <header>
+      <h1>HUNDER OG KATTER</h1>
+      <nav>
+        <button onclick="visAlleDyr()">VIS ALLE DYR</button>
+        <button onclick="visKatter()">3A</button>
+        <button onclick="visHunder()">3B</button>
+        <button onclick="visBeige()">3C</button>
+        <button onclick="visMtilT()">3D</button>
+
+      </nav>
+    </header>
+    <main>
+
+    </main>
+
+    <script>
+      const main = document.querySelector("main");
+      const db = firebase.database();
+      const hunder = db.ref("Dyr/Hunder");
+      const katter = db.ref("Dyr/Katter")
+
+      function genererHTML(snapshot){
+        let dyr = snapshot.val();
+        let key = snapshot.key;
+
+        
+        main.innerHTML +=`
+            <article class="Dyr">
+              <h1>${dyr.Navn}</h1>
+              <img src= "${dyr.Bilde}" alt="">
+              <p>Farge: ${dyr.Farge1}, ${dyr.Farge2}</p>
+              <p>Alder: ${dyr.Alder}</p>
+              <a href = "dyredetaljer.html?id=${key}"> LES MER </a>
+            </article>
+        `
+      }
+
+      function visAlle(){
+        main.innerHTML = ``
+        hunder.on("child_added", genererHTML);
+        katter.on("child_added", genererHTML);
+      }
+
+      visAlle();
+
+      function visAlleDyr(){
+        main.innerHTML = ``
+        hunder.on("child_added", genererHTML)
+        katter.on("child_added", genererHTML)
+      }
+
+      function visKatter(){
+        main.innerHTML =``
+        katter.orderByChild("Navn").on("child_added", genererHTML);
+      }
+
+      function visHunder(){
+        main.innerHTML = ``
+        hunder
+        .orderByChild("Alder")
+        .limitToLast(3)
+        .on("child_added", genererHTML)
+      }
+
+      function visBeige(){
+        main.innerHTML = ``
+        hunder
+        .orderByChild("Farge1")
+        .equalTo("Beige")
+        .on("child_added", genererHTML)
+        hunder
+        .orderByChild("Farge2")
+        .equalTo("Beige")
+        .on("child_added", genererHTML)
+
+        katter
+        .orderByChild("Farge1")
+        .equalTo("Beige")
+        .on("child_added", genererHTML)
+        katter
+        .orderByChild("Farge2")
+        .equalTo("Beige")
+        .on("child_added", genererHTML)
+      }
+
+      function visMtilT(){
+        main.innerHTML = ``
+        hunder
+        .orderByChild("Navn")
+        .startAt("M")
+        .endAt("T")
+        .on("child_added", genererHTML)
+
+        katter
+        .orderByChild("Navn")
+        .startAt("M")
+        .endAt("T")
+        .on("child_added", genererHTML)
+      }
+
+
+    </script>
+
+  </body>
+</html>

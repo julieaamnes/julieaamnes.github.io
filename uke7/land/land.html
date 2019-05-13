@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>land</title>
+
+        <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyD8o4mbgLFQW2f9AKaBkUh_ZJ0pIkNnwNk",
+            authDomain: "land-5b278.firebaseapp.com",
+            databaseURL: "https://land-5b278.firebaseio.com",
+            projectId: "land-5b278",
+            storageBucket: "land-5b278.appspot.com",
+            messagingSenderId: "147074537763"
+          };
+          firebase.initializeApp(config);
+        </script>
+  </head>
+  <body>
+    <header>
+      <nav>
+          <button onclick="visLand()"><img src="visalleland.png"> </button>
+          <br>
+          <button onclick="visLandEurope()"> Europe </button>
+          <button onclick="visLandAfrica()"> Africa  </button>
+          <button onclick="visLandAsia()"> Asia </button>
+          <button onclick="visLandAntarctica()"> Antarctica </button>
+          <button onclick="visLandNorthAmerica()"> North Amerika </button>
+          <button onclick="visLandSouthAmerica()"> South America </button>
+          <button onclick="visLandOceania()"> Oceania </button>
+      </nav>
+
+    </header>
+
+    <main>
+
+    </main>
+    <script>
+        const main = document.querySelector("main"); // Variabel som referer til mian-elementet
+
+        // Referanser til databasen
+        const db = firebase.database();
+        const country = db.ref("country"); // Referer til alt som ligger under sko i databasen
+
+
+        function lagHTML(snapshot){
+            //Javascript-funksjon som skriver varene ut på nettsiden i main-elementet
+            let country = snapshot.val();
+            main.innerHTML +=`
+                <article class="vare">
+                    <h1>${country.continentName} - ${country.countryName}</h1>
+                    <p>Befolkning: ${country.population}</p>
+                    <p>Språk: ${country.languages}</p>
+                </article>
+            `
+        }
+
+        country.on("child_added",lagHTML);
+
+
+
+        function visLand(){
+              main.innerHTML = "";
+              country.on("child_added",lagHTML);
+        }
+
+        function visLandEurope(){
+              main.innerHTML = "";
+              country
+                  .orderByChild("continentName")
+                  .equalTo("Europe")
+                  .on("child_added",lagHTML);
+        }
+
+        function visLandAfrica(){
+          main.innerHTML = "";
+          country
+              .orderByChild("continentName")
+              .equalTo("Africa")
+              .on("child_added", lagHTML)
+        }
+        function visLandAsia(){
+              main.innerHTML = "";
+              country
+                  .orderByChild("continentName")
+                  .equalTo("Asia")
+                  .on("child_added",lagHTML);
+        }
+
+        function visLandAntarctica(){
+          main.innerHTML = "";
+          country
+              .orderByChild("continentName")
+              .equalTo("Antarctica")
+              .on("child_added", lagHTML)
+        }
+
+        function visLandNorthAmerica(){
+              main.innerHTML = "";
+              country
+                  .orderByChild("continentName")
+                  .equalTo("North America")
+                  .on("child_added",lagHTML);
+        }
+
+        function visLandSouthAmerica(){
+          main.innerHTML = "";
+          country
+              .orderByChild("continentName")
+              .equalTo("South America")
+              .on("child_added", lagHTML)
+        }
+
+        function visLandOceania(){
+          main.innerHTML = "";
+          country
+              .orderByChild("continentName")
+              .equalTo("Oceania")
+              .on("child_added", lagHTML)
+        }
+
+
+    </script>
+
+  </body>
+</html>

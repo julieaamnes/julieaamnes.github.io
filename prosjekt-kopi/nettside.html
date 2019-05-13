@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>style.no</title>
+    <link rel="stylesheet" href="nettside.css">
+
+
+
+  </head>
+  <body>
+    <header>
+
+      <h1 button onclick="window.location.href = 'nettside.html';" id = "overskrift" > STYLE </button> </h1>
+
+
+      <nav id = "MiniLogo">
+        <button onclick="visAlleVarer()"> <img src="bilder/minilogo.png" alt="logo"> </button>
+      </nav>
+
+      <nav>
+        <div class="dropdown">
+          <button id="dropbtn" onclick="myFunction()" class="nav">KLÆR</button>
+          <div id= "myDropdown" class="dropdown-content">
+            <button onclick="visJakker()">JAKKER</button>
+            <button onclick="visBukser()">BUKSER</button>
+            <button onclick="visKjoler()">KJOLER</button>
+          </div>
+        </div>
+
+        <button onclick="visSko()" class= "nav" >SKO</button>
+        <button onclick="visTilbehør()" class= "nav" >TILBEHØR</button>
+        <button onclick="window.location.href = 'merker.html';" class= "nav" >MERKER</button>
+
+      </nav>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+      <section class="headerimg"> </section>
+
+
+      <div class="video">
+        <video class = "video" controls autoplay muted>
+        <source src="bilder/hovedside.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <section onclick="visAlleVarer()" class="shop"> </section>
+
+
+
+
+
+    <main>
+          <script>
+          function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+          }
+
+          window.onclick = function(event) {
+            if (!event.target.matches('#dropbtn')) {
+              var dropdowns = document.getElementsByClassName("dropdown-content");
+              var i;
+              for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                  openDropdown.classList.remove('show');
+                }
+              }
+            }
+          }
+          </script>
+
+      </header>
+      <div class="sidenav">
+        <button class="dropdown-btn">PRIS
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+          <a href="javascript:prisLavHøy()">LAV TIL HØY</a>
+        </div>
+
+        <button class="dropdown-btn">MERKE
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+          <a href="javascript:sorterMerkeN()">NAKD</a>
+          <a href="javascript:sorterMerkeM()">MANGO</a>
+          <a href="javascript:sorterMerkeS()">SAMSØE & SAMSØE</a>
+          <a href="javascript:sorterMerkeC()">CALVIN KLEIN</a>
+          <a href="javascript:sorterMerkeL()">LEVI´S</a>
+        </div>
+
+        <button class="dropdown-btn">FARGE
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+          <a href="javascript:sorterGull()">GULL</a>
+          <a href="javascript:sorterSølv()">SØLV</a>
+          <a href="javascript:sorterMønster()">MØNSTER</a>
+          <a href="javascript:sorterBeige()">BEIGE</a>
+          <a href="javascript:sorterBlå()">BLÅ</a>
+          <a href="javascript:sorterBrun()">BRUN</a>
+          <a href="javascript:sorterGrønn()">GRØNN</a>
+          <a href="javascript:sorterGrå()">GRÅ</a>
+          <a href="javascript:sorterGul()">GUL</a>
+          <a href="javascript:sorterHvit()">HVIT</a>
+          <a href="javascript:sorterRosa()">ROSA</a>
+          <a href="javascript:sorterSvart()">SVART</a>
+        </div>
+
+      </div>
+
+
+          </main>
+          <footer>
+            <br>
+            <h4>STYLE</h4>
+            <br>
+            <h4>KONTAKT OSS</h4>
+            <br>
+            <p>  . </p>
+            <p> Her hos style.no finner du klær til enhver anledning. <br> <br>
+                Vi har kjente varemerker som NA-KD, Mango, Samsøe & Samsøe,
+                Levi´s og Calvin Klein. <br> <br> Der du finner et spredt utvalg av pris,
+                modeller og kolleksjoner.</p>
+            <br>
+            <ul>
+              <li> <strong> Email: </strong>  style@shop.com </li>
+              <li> <strong> Telefon: </strong>  987 65 432</li>
+              <li> <strong> Adresse: </strong>  Elias Smiths vei 15</li>
+            </ul>
+
+          </footer>
+
+
+
+      <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyDBSHhH_D9g1eE7behKi4Z-VXzTfsBfWfo",
+          authDomain: "prosjekt-dc0b0.firebaseapp.com",
+          databaseURL: "https://prosjekt-dc0b0.firebaseio.com",
+          projectId: "prosjekt-dc0b0",
+          storageBucket: "",
+          messagingSenderId: "774854593017"
+        };
+        firebase.initializeApp(config);
+      </script>
+      <script>
+          let database = firebase.database();
+          let bukser = database.ref("varer/bukser");
+          let kjoler = database.ref("varer/kjoler");
+          let jakker = database.ref("varer/jakker");
+          let sko = database.ref("varer/sko");
+          let topper = database.ref("varer/topper");
+          let tilbehør = database.ref("varer/tilbehør");
+          let merker = database.ref("varer/merker");
+
+          let main = document.querySelector("main");
+          let headerimg = document.querySelector(".headerimg")
+          let video = document.querySelector(".video")
+          let shop = document.querySelector(".shop")
+          function visVare(snapshot) {
+              let vare = snapshot.val();
+              let key = snapshot.key;
+
+              main.innerHTML += `
+              <a id="artikkel" href="produktdetaljer.html?id=${key}">
+                  <article>
+                      <img class = "varer" src="bilder/${vare.bilde}">
+                      <h3>${vare.navn}</h3>
+                      <p>${vare.merke} ${vare.pris}</p>
+                  </article>
+              </a>
+          `;
+        }
+
+
+
+
+
+        function visAlleVarer() {
+          headerimg.innerHTML=``;
+          shop.innerHTML=``;
+          video.innerHTML= `<video class = "video" controls autoplay muted>
+          <source src="bilder/hovedside.mp4" type="video/mp4">
+          </video>`;
+          main.innerHTML = "";
+            bukser.orderByChild("navn").on("child_added", visVare);
+            kjoler.orderByChild("navn").on("child_added", visVare);
+            jakker.orderByChild("navn").on("child_added", visVare);
+            sko.orderByChild("navn").on("child_added", visVare);
+            tilbehør.orderByChild("navn").on("child_added", visVare);
+        }
+        function visForside() {
+          headerimg.innerHTML=`<img src="bilder/hovedside.jpg" alt="hovedside" id = "hovedside">`;
+          shop.innerHTML=`<img src="bilder/shop.jpg" alt="hovedside" id = "shop">`;
+          main.innerHTML = "";
+
+        }
+        visForside();
+
+        function visJakker() {
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+            jakker.on("child_added", visVare);
+        }
+        function visBukser() {
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+            bukser.on("child_added", visVare);
+        }
+        function visKjoler() {
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+            kjoler.on("child_added", visVare);
+        }
+        function visSko() {
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+            sko.on("child_added", visVare);
+        }
+        function visTilbehør() {
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+            tilbehør.on("child_added", visVare);
+        }
+
+
+
+
+
+        function prisLavHøy(){
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+            tilbehør
+            .orderByChild("pris")
+            .on("child_added", visVare);
+            kjoler
+            .orderByChild("pris")
+            .on("child_added", visVare);
+            bukser
+            .orderByChild("pris")
+            .on("child_added", visVare);
+            sko
+            .orderByChild("pris")
+            .on("child_added", visVare);
+            jakker
+            .orderByChild("pris")
+            .on("child_added", visVare);
+
+
+
+        }
+
+        function sorterMerkeN(){
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+            kjoler
+            .orderByChild("merke")
+            .equalTo("NAKD")
+            .on("child_added", visVare);
+            bukser
+            .orderByChild("merke")
+            .equalTo("NAKD")
+            .on("child_added", visVare);
+            sko
+            .orderByChild("merke")
+            .equalTo("NAKD")
+            .on("child_added", visVare);
+            jakker
+            .orderByChild("merke")
+            .equalTo("NAKD")
+            .on("child_added", visVare);
+            tilbehør
+            .orderByChild("merke")
+            .equalTo("NAKD")
+            .on("child_added", visVare);
+        }
+        function sorterMerkeM(){
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+            kjoler
+            .orderByChild("merke")
+            .equalTo("MANGO")
+            .on("child_added", visVare);
+            bukser
+            .orderByChild("merke")
+            .equalTo("MANGO")
+            .on("child_added", visVare);
+            sko
+            .orderByChild("merke")
+            .equalTo("MANGO")
+            .on("child_added", visVare);
+            jakker
+            .orderByChild("merke")
+            .equalTo("MANGO")
+            .on("child_added", visVare);
+            tilbehør
+            .orderByChild("merke")
+            .equalTo("MANGO")
+            .on("child_added", visVare);
+
+        }
+        function sorterMerkeS(){
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+            kjoler
+            .orderByChild("merke")
+            .equalTo("SAMSØE & SAMSØE")
+            .on("child_added", visVare);
+            bukser
+            .orderByChild("merke")
+            .equalTo("SAMSØE & SAMSØE")
+            .on("child_added", visVare);
+            sko
+            .orderByChild("merke")
+            .equalTo("SAMSØE & SAMSØE")
+            .on("child_added", visVare);
+            jakker
+            .orderByChild("merke")
+            .equalTo("SAMSØE & SAMSØE")
+            .on("child_added", visVare);
+            tilbehør
+            .orderByChild("merke")
+            .equalTo("SAMSØE & SAMSØE")
+            .on("child_added", visVare);
+
+        }
+        function sorterMerkeC(){
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+            kjoler
+            .orderByChild("merke")
+            .equalTo("CALVIN KLEIN")
+            .on("child_added", visVare);
+            bukser
+            .orderByChild("merke")
+            .equalTo("CALVIN KLEIN")
+            .on("child_added", visVare);
+            sko
+            .orderByChild("merke")
+            .equalTo("CALVIN KLEIN")
+            .on("child_added", visVare);
+            jakker
+            .orderByChild("merke")
+            .equalTo("CALVIN KLEIN")
+            .on("child_added", visVare);
+            tilbehør
+            .orderByChild("merke")
+            .equalTo("CALVIN KLEIN")
+            .on("child_added", visVare);
+
+        }
+        function sorterMerkeL(){
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+            kjoler
+            .orderByChild("merke")
+            .equalTo("LEVI´S")
+            .on("child_added", visVare);
+            bukser
+            .orderByChild("merke")
+            .equalTo("LEVI´S")
+            .on("child_added", visVare);
+            sko
+            .orderByChild("merke")
+            .equalTo("LEVI´S")
+            .on("child_added", visVare);
+            jakker
+            .orderByChild("merke")
+            .equalTo("LEVI´S")
+            .on("child_added", visVare);
+            tilbehør
+            .orderByChild("merke")
+            .equalTo("LEVI´S")
+            .on("child_added", visVare);
+
+        }
+
+
+        function sorterGull() {
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+          kjoler
+          .orderByChild("farge")
+          .equalTo("gull")
+          .on("child_added", visVare)
+          bukser
+          .orderByChild("farge")
+          .equalTo("gull")
+          .on("child_added", visVare)
+          sko
+          .orderByChild("farge")
+          .equalTo("gull")
+          .on("child_added", visVare)
+          jakker
+          .orderByChild("farge")
+          .equalTo("gull")
+          .on("child_added", visVare)
+          tilbehør
+          .orderByChild("farge")
+          .equalTo("gull")
+          .on("child_added", visVare)
+        }
+        function sorterSølv() {
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+          kjoler
+          .orderByChild("farge")
+          .equalTo("sølv")
+          .on("child_added", visVare)
+          bukser
+          .orderByChild("farge")
+          .equalTo("sølv")
+          .on("child_added", visVare)
+          sko
+          .orderByChild("farge")
+          .equalTo("sølv")
+          .on("child_added", visVare)
+          jakker
+          .orderByChild("farge")
+          .equalTo("sølv")
+          .on("child_added", visVare)
+          tilbehør
+          .orderByChild("farge")
+          .equalTo("sølv")
+          .on("child_added", visVare)
+        }
+        function sorterMønster() {
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+          kjoler
+          .orderByChild("farge")
+          .equalTo("mønster")
+          .on("child_added", visVare)
+          bukser
+          .orderByChild("farge")
+          .equalTo("mønster")
+          .on("child_added", visVare)
+          sko
+          .orderByChild("farge")
+          .equalTo("mønster")
+          .on("child_added", visVare)
+          jakker
+          .orderByChild("farge")
+          .equalTo("mønster")
+          .on("child_added", visVare)
+          tilbehør
+          .orderByChild("farge")
+          .equalTo("mønster")
+          .on("child_added", visVare)
+        }
+        function sorterBeige() {
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+          kjoler
+          .orderByChild("farge")
+          .equalTo("beige")
+          .on("child_added", visVare)
+          bukser
+          .orderByChild("farge")
+          .equalTo("beige")
+          .on("child_added", visVare)
+          sko
+          .orderByChild("farge")
+          .equalTo("beige")
+          .on("child_added", visVare)
+          jakker
+          .orderByChild("farge")
+          .equalTo("beige")
+          .on("child_added", visVare)
+          tilbehør
+          .orderByChild("farge")
+          .equalTo("beige")
+          .on("child_added", visVare)
+        }
+        function sorterBlå() {
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+          kjoler
+          .orderByChild("farge")
+          .equalTo("blå")
+          .on("child_added", visVare)
+          bukser
+          .orderByChild("farge")
+          .equalTo("blå")
+          .on("child_added", visVare)
+          sko
+          .orderByChild("farge")
+          .equalTo("blå")
+          .on("child_added", visVare)
+          jakker
+          .orderByChild("farge")
+          .equalTo("blå")
+          .on("child_added", visVare)
+          tilbehør
+          .orderByChild("farge")
+          .equalTo("blå")
+          .on("child_added", visVare)
+        }
+        function sorterBrun() {
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+          kjoler
+          .orderByChild("farge")
+          .equalTo("brun")
+          .on("child_added", visVare)
+          bukser
+          .orderByChild("farge")
+          .equalTo("brun")
+          .on("child_added", visVare)
+          sko
+          .orderByChild("farge")
+          .equalTo("brun")
+          .on("child_added", visVare)
+          jakker
+          .orderByChild("farge")
+          .equalTo("brun")
+          .on("child_added", visVare)
+          tilbehør
+          .orderByChild("farge")
+          .equalTo("brun")
+          .on("child_added", visVare)
+        }
+        function sorterGrønn() {
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+          kjoler
+          .orderByChild("farge")
+          .equalTo("grønn")
+          .on("child_added", visVare)
+          bukser
+          .orderByChild("farge")
+          .equalTo("grønn")
+          .on("child_added", visVare)
+          sko
+          .orderByChild("farge")
+          .equalTo("grønn")
+          .on("child_added", visVare)
+          jakker
+          .orderByChild("farge")
+          .equalTo("grønn")
+          .on("child_added", visVare)
+          tilbehør
+          .orderByChild("farge")
+          .equalTo("grønn")
+          .on("child_added", visVare)
+        }
+        function sorterGrå() {
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+          kjoler
+          .orderByChild("farge")
+          .equalTo("grå")
+          .on("child_added", visVare)
+          bukser
+          .orderByChild("farge")
+          .equalTo("grå")
+          .on("child_added", visVare)
+          sko
+          .orderByChild("farge")
+          .equalTo("grå")
+          .on("child_added", visVare)
+          jakker
+          .orderByChild("farge")
+          .equalTo("grå")
+          .on("child_added", visVare)
+          tilbehør
+          .orderByChild("farge")
+          .equalTo("grå")
+          .on("child_added", visVare)
+        }
+        function sorterGul() {
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+          kjoler
+          .orderByChild("farge")
+          .equalTo("gul")
+          .on("child_added", visVare)
+          bukser
+          .orderByChild("farge")
+          .equalTo("gul")
+          .on("child_added", visVare)
+          sko
+          .orderByChild("farge")
+          .equalTo("gul")
+          .on("child_added", visVare)
+          jakker
+          .orderByChild("farge")
+          .equalTo("gul")
+          .on("child_added", visVare)
+          tilbehør
+          .orderByChild("farge")
+          .equalTo("gul")
+          .on("child_added", visVare)
+        }
+        function sorterHvit() {
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+          kjoler
+          .orderByChild("farge")
+          .equalTo("hvit")
+          .on("child_added", visVare)
+          bukser
+          .orderByChild("farge")
+          .equalTo("hvit")
+          .on("child_added", visVare)
+          sko
+          .orderByChild("farge")
+          .equalTo("hvit")
+          .on("child_added", visVare)
+          jakker
+          .orderByChild("farge")
+          .equalTo("hvit")
+          .on("child_added", visVare)
+          tilbehør
+          .orderByChild("farge")
+          .equalTo("hvit")
+          .on("child_added", visVare)
+        }
+        function sorterRosa() {
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+          kjoler
+          .orderByChild("farge")
+          .equalTo("rosa")
+          .on("child_added", visVare)
+          bukser
+          .orderByChild("farge")
+          .equalTo("rosa")
+          .on("child_added", visVare)
+          sko
+          .orderByChild("farge")
+          .equalTo("rosa")
+          .on("child_added", visVare)
+          jakker
+          .orderByChild("farge")
+          .equalTo("rosa")
+          .on("child_added", visVare)
+          tilbehør
+          .orderByChild("farge")
+          .equalTo("rosa")
+          .on("child_added", visVare)
+        }
+        function sorterSvart() {
+          shop.innerHTML=``;
+          headerimg.innerHTML=``;
+          video.innerHTML=``;
+          main.innerHTML = "";
+          kjoler
+          .orderByChild("farge")
+          .equalTo("svart")
+          .on("child_added", visVare)
+          bukser
+          .orderByChild("farge")
+          .equalTo("svart")
+          .on("child_added", visVare)
+          sko
+          .orderByChild("farge")
+          .equalTo("svart")
+          .on("child_added", visVare)
+          jakker
+          .orderByChild("farge")
+          .equalTo("svart")
+          .on("child_added", visVare)
+          tilbehør
+          .orderByChild("farge")
+          .equalTo("svart")
+          .on("child_added", visVare)
+        }
+
+
+      </script>
+
+
+
+
+
+
+
+
+      <script>
+      var dropdown = document.getElementsByClassName("dropdown-btn");
+      var i;
+
+      for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+        dropdownContent.style.display = "none";
+        } else {
+        dropdownContent.style.display = "block";
+        }
+        });
+      }
+      </script>
+
+
+  </body>
+</html>

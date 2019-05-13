@@ -1,0 +1,10 @@
+main{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+button{
+  margin: 15px;
+  padding: 10px;
+  background-color: black;
+  color: white;
+}

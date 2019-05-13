@@ -1,0 +1,240 @@
+{
+  "varer" : {
+    "bukser" : {
+      "bukse001" : {
+        "bilde" : "bukse001.jpg",
+        "farge" : "rosa",
+        "farge2" : "rød",
+        "merke" : "NAKD",
+        "navn" : "Shiny Suit Pants",
+        "pris" : 449
+      },
+      "bukse002" : {
+          "merke" : "NAKD",
+          "navn" : "Everyday Sweatpants",
+          "pris" : 389,
+          "farge" : "grå",
+          "farge2" : "beige",
+          "bilde" : "bukse002.jpg"
+      },
+      	"bukse003" : {
+        	"merke" : "MANGO",
+          "navn" : "Mosquito Trousers",
+          "pris" : 559,
+          "farge" : "brun",
+          "farge2" : "beige",
+          "bilde" : "bukse003.jpg"
+      },
+      "bukse004" : {
+        	"merke" : "MANGO",
+          "navn" : "Ricardo Trousers",
+          "pris" : 389,
+          "farge" : "svart",
+          "farge2" : "grå",
+          "bilde" : "bukse004.jpg"
+      },
+      "bukse005" : {
+        	"merke" : "SAMSØE & SAMSØE",
+          "navn" : "Karri Pants Aop Multicolor",
+          "pris" : 1559,
+          "farge" : "mønster",
+          "farge2" : "svart",
+          "bilde" : "bukse005.jpg"
+      },
+      "bukse006" : {
+        	"merke" : "SAMSØE & SAMSØE",
+          "navn" : "Mella Pants",
+          "pris" : 1439,
+          "farge" : "grønn",
+          "bilde" : "bukse006.jpg"
+      },
+      "bukse007" : {
+        	"merke" : "CALVIN KLEIN",
+          "navn" : "Pyjama Pant Modern Cotton",
+          "pris" : 509,
+          "farge" : "svart",
+          "farge2" : "grå",
+          "bilde" : "bukse007.jpg"
+      },
+      "bukse008" : {
+        	"merke" : "CALVIN KLEIN",
+          "navn" : "Side Stripe Track Pant",
+          "pris" : 1439,
+          "farge" : "svart",
+          "farge2" : "grå",
+          "bilde" : "bukse008.jpg"
+      },
+      "bukse009" : {
+        	"merke" : "LEVI´S",
+          "navn" : "501 Skinny Jeans",
+          "pris" : 1109,
+          "farge" : "blå",
+          "bilde" : "bukse009.jpg"
+      },
+      "bukse010" : {
+        	"merke" : "LEVI´S",
+          "navn" : "501 Crop Jeans",
+          "pris" : 1109,
+          "farge" : "hvit",
+          "farge2" : "beige",
+          "bilde" : "bukse010.jpg"
+      }
+    },
+    "jakker" : {
+      "jakke001" : {
+        "bilde" : "jakke001.jpg",
+        "farge" : "beige",
+        "farge2" : "brun",
+        "merke" : "NAKD",
+        "navn" : "Classic Maxi Coat",
+        "pris" : 999
+      },
+      "jakke002" : {
+        "bilde" : "jakke002.jpg",
+        "farge" : "svart",
+        "farge2" : "grå",
+        "merke" : "NAKD",
+        "navn" : "Contrast Bonded Aviator Jacket",
+        "pris" : 1109
+      },
+      "jakke003" : {
+        "merke" : "MANGO",
+        "navn" : "Marcmoto Jacket",
+        "pris" : 389,
+        "farge" : "svart",
+        "farge2" : "grå",
+        "bilde" : "jakke003.jpg"
+      },
+      "jakke004" : {
+        "merke" : "MANGO",
+        "navn" : "Newbox Coat",
+        "pris" : 999,
+        "farge" : "brun",
+        "farge2" : "beige",
+        "bilde" : "jakke004.jpg"
+      },
+  	  "jakke005" : {
+        "merke" : "SAMSØE & SAMSØE",
+        "navn" : "Vinda jacket",
+        "pris" : 2219,
+        "farge" : "blå",
+        "bilde" : "jakke005.jpg"
+      },
+      "jakke006" : {
+        "merke" : "SAMSØE & SAMSØE",
+        "navn" : "Naper Jacket",
+        "pris" : 3989,
+        "farge" : "blå",
+        "bilde" : "jakke006.jpg"
+      },
+      "jakke007" : {
+        "merke" : "CALVIN KLEIN",
+        "navn" : "Clean Line Trucker",
+        "pris" : 1669,
+        "farge" : "blå",
+        "bilde" : "jakke007.jpg"
+      },
+      "jakke008" : {
+        "merke" : "CALVIN KLEIN",
+        "navn" : "Nylon Windbreaker",
+        "pris" : 1439,
+        "farge" : "hvit",
+        "farge2" : "beige",
+        "bilde" : "jakke008.jpg"
+      },
+   	  "jakke009" : {
+        "merke" : "LEVI´S",
+        "navn" : "Clear Baggy Trucker Jacket",
+        "pris" : 949,
+        "farge" : "hvit",
+        "farge2" : "beige",
+        "bilde" : "jakke009.jpg"
+      },
+     "jakke010" : {
+        "merke" : "LEVI´S",
+        "navn" : "Ex Boyfriend Trucker Soft Jacket",
+        "pris" : 1219,
+        "farge" : "blå",
+        "bilde" : "jakke010.jpg"
+      }
+    },
+    "kjoler" : {
+      "kjole001" : {
+        "farge" : "hvit",
+        "farge2" : "beige",
+        "merke" : "NAKD",
+        "navn" : "Off Shoulder Midi dress",
+        "pris" : 669,
+        "bilde" : "kjole001.jpg"
+      },
+      "kjole002" : {
+        "merke" : "NAKD",
+        "navn" : "Draping Detail Asymmetric Dress",
+        "pris" : 559,
+        "farge" : "blå",
+        "bilde" : "kjole002.jpg"
+      },
+      "kjole003" : {
+        "merke" : "MANGO",
+        "navn" : "Moss Dress",
+        "pris" : 559,
+        "farge" : "blå",
+        "bilde" : "kjole003.jpg"
+      },
+      "kjole004" : {
+        "merke" : "MANGO",
+        "navn" : "Popi Dress",
+        "pris" : 389,
+        "farge" : "hvit",
+        "farge2" : "hvit",
+        "bilde" : "kjole004.jpg"
+      },
+      "kjole005" : {
+        "merke" : "SAMSØE & SAMSØE",
+        "navn" : "Willow Dress Long",
+        "pris" : 1559,
+        "farge" : "svart",
+        "farge2" : "grå",
+        "bilde" : "kjole005.jpg"
+      },
+      "kjole006" : {
+        "merke" : "SAMSØE & SAMSØE",
+        "navn" : "Simona Dress",
+        "pris" : 1559,
+        "farge" : "grønn",
+        "bilde" : "kjole006.jpg"
+      },
+      "kjole007" : {
+        "merke" : "NAKD",
+        "navn" : "Broiderie Anglais Mini Dress",
+        "pris" : 669,
+        "farge" : "hvit",
+        "farge2" : "beige",
+        "bilde" : "kjole007.jpg"
+      },
+      "kjole008" : {
+        "merke" : "NAKD",
+        "navn" : "Tie Short Blazer Dress",
+        "pris" : 779,
+        "farge" : "svart",
+        "farge2" : "grå",
+        "bilde" : "kjole008.jpg"
+      },
+      "kjole009" : {
+        "merke" : "NAKD",
+        "navn" : "Balloon Sleeve Belted Blazer Dress ",
+        "pris" : 779,
+        "farge" : "svart",
+        "farge2" : "grå",
+        "bilde" : "kjole009.jpg"
+      },
+      "kjole010" : {
+        "merke" : "NAKD",
+        "navn" : "High Neck Elastic Waist Puff Dress ",
+        "pris" : 499,
+        "farge" : "gul",
+        "bilde" : "kjole010.jpg"
+      }
+    }
+  }
+}

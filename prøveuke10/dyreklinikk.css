@@ -1,0 +1,16 @@
+body{
+    margin: 40px;
+}
+main{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+nav{
+  text-align:right;
+}
+button{
+  margin: 15px;
+  padding: 10px;
+  background-color: lightgrey;
+  color: black;
+}
